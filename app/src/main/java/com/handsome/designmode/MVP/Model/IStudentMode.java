@@ -12,9 +12,17 @@ import java.util.List;
  */
 public interface IStudentMode {
 
-    void loadStudent(onLoadStudentListener listener);
+    void query(onQueryListener listener);
+    void addStudent(onAddStudentListener listener);
+    void deleteStudent(onDeleteStudentListener listener);
 
-    interface onLoadStudentListener{
+    interface onQueryListener{
         void onComplete(List<Student> students);
+    }
+    interface onAddStudentListener{
+        void onComplete();
+    }
+    interface onDeleteStudentListener{
+        void onComplete();
     }
 }

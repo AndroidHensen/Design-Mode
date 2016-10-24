@@ -13,13 +13,18 @@ import com.handsome.designmode.R;
 
 import java.util.List;
 
+/**
+ * 作者：许英俊
+ * 视图层
+ * 发送输入请求给控制器
+ */
 public class BookActivity extends AppCompatActivity implements View.OnClickListener {
 
     private BookController bookController;
+
     private ListView lv_book;
     private List<Book> list;
     private BookAdapter adapter;
-
     private Button bt_add, bt_delete;
 
     @Override
@@ -41,23 +46,24 @@ public class BookActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            //添加书本按钮
             case R.id.bt_add:
                 bookController.add(new BookController.onAddBookListener() {
                     @Override
-                    public void opComplete() {
+                    public void onComplete() {
                         adapter.notifyDataSetChanged();
                     }
                 });
                 break;
+            //删除书本按钮
             case R.id.bt_delete:
                 bookController.delete(new BookController.onDeleteBookListener() {
                     @Override
-                    public void opComplete() {
+                    public void onComplete() {
                         adapter.notifyDataSetChanged();
                     }
                 });
                 break;
         }
     }
-
 }

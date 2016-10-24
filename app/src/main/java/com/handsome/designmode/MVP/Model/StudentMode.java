@@ -12,18 +12,38 @@ import java.util.List;
  * =====时间=====
  * 2016/10/23.
  */
-public class StudentMode implements IStudentMode{
+public class StudentMode implements IStudentMode {
+
+    private static List<Student> list = new ArrayList<>();
+
+    static {
+        list.add(new Student("小龙", R.drawable.man));
+        list.add(new Student("小红", R.drawable.woman));
+        list.add(new Student("小龙", R.drawable.man));
+    }
 
     @Override
-    public void loadStudent(onLoadStudentListener listener) {
-        List<Student> students = new ArrayList<>();
-        students.add(new Student("李四", R.mipmap.ic_launcher));
-        students.add(new Student("張三", R.mipmap.ic_launcher));
-        students.add(new Student("李四", R.mipmap.ic_launcher));
-        students.add(new Student("張三", R.mipmap.ic_launcher));
-        students.add(new Student("李四", R.mipmap.ic_launcher));
-        if(listener != null){
-            listener.onComplete(students);
+    public void query(onQueryListener listener) {
+        if (listener != null) {
+            listener.onComplete(list);
+        }
+    }
+
+    @Override
+    public void addStudent(onAddStudentListener listener) {
+        list.add(new Student("小燕", R.drawable.girl));
+        if (listener != null) {
+            listener.onComplete();
+        }
+    }
+
+    @Override
+    public void deleteStudent(onDeleteStudentListener listener) {
+        if (list.size() > 0) {
+            list.remove(list.size() - 1);
+        }
+        if (listener != null) {
+            listener.onComplete();
         }
     }
 }

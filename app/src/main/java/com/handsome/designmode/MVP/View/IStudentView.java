@@ -11,8 +11,6 @@ import java.util.List;
  * 2016/10/24.
  */
 public interface IStudentView {
-    // 显示进度
-    void showLoading();
-    // 显示学生
-    void showStudents(List<Student> students);
+    void showStudent(List<Student> list);
+    void refreshStudent();
 }

@@ -47,7 +47,7 @@ public class StudentAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = inflater.inflate(R.layout.adapter_book, null);
+            convertView = inflater.inflate(R.layout.adapter_student, null);
         }
         ViewHolder viewHolder = getViewHolder(convertView);
         viewHolder.iv.setBackgroundResource(list.get(position).getImage());
