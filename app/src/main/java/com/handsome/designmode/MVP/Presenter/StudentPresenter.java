@@ -8,10 +8,9 @@ import com.handsome.designmode.MVP.View.IStudentView;
 import java.util.List;
 
 /**
- * =====作者=====
- * 许英俊
- * =====时间=====
- * 2016/10/23.
+ * 作者：许英俊
+ * 中间者
+ * 绑定View层和Model层
  */
 public class StudentPresenter {
 
@@ -23,6 +22,9 @@ public class StudentPresenter {
         this.studentView = studentView;
     }
 
+    /**
+     * 通过Model查询学生，在View中展示
+     */
     public void queryStudent(){
         studentMode.query(new IStudentMode.onQueryListener() {
             @Override
@@ -32,6 +34,9 @@ public class StudentPresenter {
         });
     }
 
+    /**
+     * 通过Model添加学生，在View中更新
+     */
     public void addStudent(){
         studentMode.addStudent(new IStudentMode.onAddStudentListener() {
             @Override
@@ -41,6 +46,9 @@ public class StudentPresenter {
         });
     }
 
+    /**
+     * 通过Model删除学生，在View中更新
+     */
     public void deleteStudent(){
         studentMode.deleteStudent(new IStudentMode.onDeleteStudentListener() {
             @Override
@@ -49,6 +57,4 @@ public class StudentPresenter {
             }
         });
     }
-
-
 }
